@@ -1,0 +1,98 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Books API
+  description: A Simple API to perform Stacks push and pop operation
+  termsOfService: https://github.io/stacks-api
+  contact:
+    name: vipul Agarwal
+    email: agarwalvipul23@gmail.com
+    url: https://github.io/vpulagarwal
+  license:
+    name: MIT
+    url: https://github.io
+servers:
+  - url: http://api.vipul.com/v1/
+paths:
+  /books:
+    post:
+      description: Adds a book to the stack.
+      operationId: push
+      requestBody:
+        description: Item to add
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/newBook'
+      responses:
+        '200':
+          description: list of books in stack
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/books'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      description: removes a book from stack
+      operationId: pop
+      responses:
+        '200':
+          description: removed book
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/book'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    books:
+      type: array
+      items:
+        $ref: '#/components/schemas/book'
+    book:
+      allOf:
+        - $ref: '#/components/schemas/newBook'
+        - type: object
+          required:
+          - id
+          properties:
+            id:
+              type: integer
+              format: int64
+            isTop:
+              type: boolean
+            isBottom:
+              type: boolean
+
+    newBook:
+      type: object
+      required:
+        - name  
+      properties:
+        name:
+          type: string
+        title:
+          type: string    
+
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
