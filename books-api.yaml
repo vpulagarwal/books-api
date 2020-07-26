@@ -70,17 +70,14 @@ components:
             id:
               type: integer
               format: int64
-            isTop:
-              type: boolean
-            isBottom:
-              type: boolean
 
     newBook:
       type: object
       required:
-        - name  
+        - title
+        - author
       properties:
-        name:
+        author:
           type: string
         title:
           type: string    
