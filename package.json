@@ -1,0 +1,24 @@
+{
+  "name": "books-stacks-api",
+  "version": "1.0.0",
+  "description": "stack implementation using microservice arch",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "stack",
+    "push",
+    "pop",
+    "nodejs",
+    "mariadb",
+    "sequelize"
+  ],
+  "author": "Vipul Agarwal",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3",
+    "mysql2": "^1.5.3",
+    "sequelize": "^4.37.6"
+  }
+}
