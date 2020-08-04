@@ -9,7 +9,8 @@ Stack implementation using Micro service architecture
 `dockerc-compose up`
 
 - K8 Implementation: 
-    - Nginx Ingress service
     - Web API
     - MariaDB 
     - Persistent Volumes
+
+    `kubectl apply -f k8s/`
